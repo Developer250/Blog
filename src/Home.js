@@ -1,16 +1,23 @@
 import { useState } from "react";
 
 const Home = () => {
-    const [name, setName] = useState("Mario");
+    //Asetetaan nimi ja ikä oeltus arvoihin ja kun klikataan buttonia, niin se vaihtaa nimen ja iän arvot näytöllä
+    const [blogs, setBlogs] = useState([
+        { title: "My new website", body: "lorem ipsum...",author: "Mario", id:1 },
+        { title: "Welcome to party!", body: "lorem ipsum...",author: "Luigi", id:2 },
+        { title: "Web dev tips", body: "lorem ipsum...",author: "Mario", id:3 },
+    ]);
+    
 
-    const handleCLick = () => {
-        setName("Luigi");
-    }
+       
     return (
         <div className="home">
-            <h2>Home page</h2>
-            <p> { name }</p>
-            <button onClick={handleCLick}>Click me</button>
+            {blogs.map((blog) => (
+                <div className="blog-preview" key={blog.id}>
+                    <h2> {blog.title} </h2>
+                    <p> Written by {blog.author} </p>
+            </div>
+            ))}
         </div>
     );
 }
