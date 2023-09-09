@@ -46,14 +46,15 @@
     padding: 20px;
 }
 .blog-preview{
-    padding: 7px;
-    border-bottom:10px;
-    color:brown;
+    padding: 10px 17px;
+    border-radius:10px;
+    color:fuchsia;
 }
 .blog-preview:hover{
-    box-shadow:1px 3px 5px rgb(0, 148, 255)
+    box-shadow:1px 3px 5px blueviolet;
 }
 .blog-preview h2{
+    border-bottom:double;
     font-size:15px;
     color:darkkhaki;
     margin-bottom:8px;

@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 const Home = () => {
-    //Asetetaan nimi ja ikä oeltus arvoihin ja kun klikataan buttonia, niin se vaihtaa nimen ja iän arvot näytöllä
+    //Asetetaan blogit taulukkoon oletus arvoihin ja arvot näytöllä
     const [blogs, setBlogs] = useState([
         { title: "My new website", body: "lorem ipsum...",author: "Mario", id:1 },
         { title: "Welcome to party!", body: "lorem ipsum...",author: "Luigi", id:2 },
         { title: "Web dev tips", body: "lorem ipsum...",author: "Mario", id:3 },
     ]);
     
-
        
     return (
         <div className="home">
