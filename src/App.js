@@ -1,11 +1,6 @@
 import Navbar from './Navbar';
 import Home from './Home';
 
-let name = "Mario";
-
-const handleClick = () => {
-
-}
 
 function App() {
   return (
