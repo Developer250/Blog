@@ -8,6 +8,9 @@ const Home = () => {
         { title: "My new website", body: "lorem ipsum...", author: "Mario", id: 1 },
         { title: "Welcome to party!", body: "lorem ipsum...", author: "Luigi", id: 2 },
         { title: "Web dev tips", body: "lorem ipsum...", author: "Mario", id: 3 },
+        { title: "Weather", body: "lorem ipsum...", author: "Luigi", id: 3 },
+        { title: "Hockey", body: "lorem ipsum...", author: "Luigi", id: 3 },
+        { title: "Football", body: "lorem ipsum...", author: "Mario", id: 3 },
     ]);
 
     const handleDelete = (id) => {
