@@ -28,7 +28,7 @@ const Home = () => {
     //mutta ei muutu kun klikataan poista - buttonia eli renderöidään yhtä asiaa, ei kaikkia.
     return (
         <div className="home">
-            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario")} handleDelete={handleDelete} title="Mario's blogs" />
+            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario")} handleDelete={handleDelete} title="All blogs!" />
             <button onClick={() => setName("Luigi")}>Change name</button>
             <p> {name }</p>
         </div>
