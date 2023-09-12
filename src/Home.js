@@ -18,8 +18,8 @@ const Home = () => {
     // Filtteröidään blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lisäksi määritellään 
     return (
         <div className="home">
-            <BlogList blogs={blogs} title="All in one!" />
-            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario")} title="Mario's blogs" />
+            <BlogList blogs={blogs.filter((blog) => blog.author === "Luigi")} handleDelete={handleDelete} title="Luigi's blogs"/>
+            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario", "Luigi")} handleDelete={handleDelete} title="Mario's blogs" />
         </div>
     );
 }
