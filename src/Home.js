@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -7,10 +7,7 @@ const Home = () => {
     const [blogs, setBlogs] = useState([
         { title: "My new website", body: "lorem ipsum...", author: "Mario", id: 1 },
         { title: "Welcome to party!", body: "lorem ipsum...", author: "Luigi", id: 2 },
-        { title: "Web dev tips", body: "lorem ipsum...", author: "Mario", id: 3 },
-        { title: "Weather", body: "lorem ipsum...", author: "Luigi", id: 3 },
-        { title: "Hockey", body: "lorem ipsum...", author: "Luigi", id: 3 },
-        { title: "Football", body: "lorem ipsum...", author: "Mario", id: 3 },
+        { title: "Web dev tips", body: "lorem ipsum...", author: "Mario", id: 3 }
     ]);
 
     const handleDelete = (id) => {
@@ -18,11 +15,22 @@ const Home = () => {
         setBlogs(newBlogs);
     }
 
+    const [name, setName] = useState("Mario");
+
+    useEffect(() => {
+        console.log("use effect ran");
+        console.log(name);
+    }, [name]);
+
+   
     // Filtteröidään blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lisäksi määritellään 
+    //Testataan useEffect toimintoa, kun halutaan vain, että nimi muuttuu, kun klikataan nimi-buttonia, 
+    //mutta ei muutu kun klikataan poista - buttonia eli renderöidään yhtä asiaa, ei kaikkia.
     return (
         <div className="home">
-            <BlogList blogs={blogs.filter((blog) => blog.author === "Luigi")} handleDelete={handleDelete} title="Luigi's blogs"/>
-            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario", "Luigi")} handleDelete={handleDelete} title="Mario's blogs" />
+            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario")} handleDelete={handleDelete} title="Mario's blogs" />
+            <button onClick={() => setName("Luigi")}>Change name</button>
+            <p> {name }</p>
         </div>
     );
 }
