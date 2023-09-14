@@ -6,11 +6,6 @@ const Home = () => {
   //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain.
   const [blogs, setBlogs] = useState(null);
 
-  const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
-  };
-
   //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
   useEffect(() => {
     fetch("http://localhost:8000/blogs")
@@ -27,13 +22,7 @@ const Home = () => {
   //mutta ei muutu kun klikataan poista - buttonia eli render�id��n yht� asiaa, ei kaikkia.
   return (
     <div className="home">
-      {blogs && (
-        <BlogList
-          blogs={blogs}
-          handleDelete={handleDelete}
-          title="All blogs!"
-        />
-      )}
+      {blogs && <BlogList blogs={blogs} title="All blogs!" />}
     </div>
   );
 };
