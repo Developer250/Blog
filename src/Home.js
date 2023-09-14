@@ -1,37 +1,34 @@
-import { useEffect, useState } from "react";
+ï»¿import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-    //Asetetaan blogit taulukkoon oletus arvoihin ja arvot näytöllä. 
+    //Asetetaan blogit taulukkoon oletus arvoihin ja arvot nï¿½ytï¿½llï¿½.
     //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain
-    const [blogs, setBlogs] = useState([
-        { title: "My new website", body: "lorem ipsum...", author: "Mario", id: 1 },
-        { title: "Welcome to party!", body: "lorem ipsum...", author: "Luigi", id: 2 },
-        { title: "Web dev tips", body: "lorem ipsum...", author: "Mario", id: 3 }
-    ]);
+    const [blogs, setBlogs] = useState(null);
 
     const handleDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id);
+        const newBlogs = blogs.filter((blog) => blog.id !== id);
         setBlogs(newBlogs);
-    }
+    };
 
-    const [name, setName] = useState("Mario");
-
+    //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
     useEffect(() => {
-        console.log("use effect ran");
-        console.log(name);
-    }, [name]);
+        fetch("http://localhost:8000/blogs")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setBlogs(data);
+            });
+    }, []);
 
-   
-    // Filtteröidään blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lisäksi määritellään 
-    //Testataan useEffect toimintoa, kun halutaan vain, että nimi muuttuu, kun klikataan nimi-buttonia, 
-    //mutta ei muutu kun klikataan poista - buttonia eli renderöidään yhtä asiaa, ei kaikkia.
+    // Filtterï¿½idï¿½ï¿½n blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lisï¿½ksi mï¿½ï¿½ritellï¿½ï¿½n
+    //Testataan useEffect toimintoa, kun halutaan vain, ettï¿½ nimi muuttuu, kun klikataan nimi-buttonia,
+    //mutta ei muutu kun klikataan poista - buttonia eli renderï¿½idï¿½ï¿½n yhtï¿½ asiaa, ei kaikkia.
     return (
         <div className="home">
-            <BlogList blogs={blogs.filter((blog) => blog.author === "Mario")} handleDelete={handleDelete} title="All blogs!" />
-            <button onClick={() => setName("Luigi")}>Change name</button>
-            <p> {name }</p>
+            {blogs && <BlogList blogs={blogs} handleDelete={handleDelete} title="All blogs!" />}
         </div>
     );
-}
+};
 export default Home;
