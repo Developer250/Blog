@@ -2,33 +2,39 @@
 import BlogList from "./BlogList";
 
 const Home = () => {
-    //Asetetaan blogit taulukkoon oletus arvoihin ja arvot n�yt�ll�.
-    //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain
-    const [blogs, setBlogs] = useState(null);
+  //Asetetaan blogit taulukkoon oletus arvoihin ja arvot n�yt�ll�.
+  //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain.
+  const [blogs, setBlogs] = useState(null);
 
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter((blog) => blog.id !== id);
-        setBlogs(newBlogs);
-    };
+  const handleDelete = (id) => {
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
+    setBlogs(newBlogs);
+  };
 
-    //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
-    useEffect(() => {
-        fetch("http://localhost:8000/blogs")
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setBlogs(data);
-            });
-    }, []);
+  //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
+  useEffect(() => {
+    fetch("http://localhost:8000/blogs")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setBlogs(data);
+      });
+  }, []);
 
-    // Filtter�id��n blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
-    //Testataan useEffect toimintoa, kun halutaan vain, ett� nimi muuttuu, kun klikataan nimi-buttonia,
-    //mutta ei muutu kun klikataan poista - buttonia eli render�id��n yht� asiaa, ei kaikkia.
-    return (
-        <div className="home">
-            {blogs && <BlogList blogs={blogs} handleDelete={handleDelete} title="All blogs!" />}
-        </div>
-    );
+  // Filtter�id��n blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
+  //Testataan useEffect toimintoa, kun halutaan vain, ett� nimi muuttuu, kun klikataan nimi-buttonia,
+  //mutta ei muutu kun klikataan poista - buttonia eli render�id��n yht� asiaa, ei kaikkia.
+  return (
+    <div className="home">
+      {blogs && (
+        <BlogList
+          blogs={blogs}
+          handleDelete={handleDelete}
+          title="All blogs!"
+        />
+      )}
+    </div>
+  );
 };
 export default Home;
