@@ -2,7 +2,7 @@
 import BlogList from "./BlogList";
 
 const Home = () => {
-  //Asetetaan blogit taulukkoon oletus arvoihin ja arvot n�yt�ll�.
+  //Asetetaan blogit taulukkoon oletus arvoihin ja arvot näytölle.
   //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain.
   const [blogs, setBlogs] = useState(null);
 
