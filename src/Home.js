@@ -24,16 +24,18 @@ const Home = () => {
         .then((data) => {
           setBlogs(data);
           setLoading(false);
+          setError(null);
         })
         .catch((err) => {
+          setLoading(false);
           setError(err.message);
         });
     }, 400);
   }, []);
 
-  // Filtter�id��n blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
+  // Filtteröidään blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
   //Testataan useEffect toimintoa, kun halutaan vain, että nimi muuttuu, kun klikataan nimi-buttonia,
-  //mutta ei muutu kun klikataan poista - buttonia eli render�id��n yht� asiaa, ei kaikkia.
+  //mutta ei muutu kun klikataan poista - buttonia eli renderöidn yhtä asiaa, ei kaikkia.
   return (
     <div className="home">
       {error && <div>{error}</div>}
