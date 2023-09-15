@@ -19,7 +19,7 @@ const Home = () => {
           setBlogs(data);
           setLoading(false);
         });
-    }, 300);
+    }, 400);
   }, []);
 
   // Filtter�id��n blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
