@@ -1,37 +1,17 @@
 ﻿import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
+import useFetch from "./useFetch";
 
 const Home = () => {
-  //Asetetaan blogit taulukkoon oletus arvoihin ja arvot näytölle.
-  //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain.
-  const [blogs, setBlogs] = useState(null);
-  //Latausviesti palvelimessa
-  const [loading, setLoading] = useState(true);
-
-  const [error, setError] = useState(null);
+  const {
+    data: blogs,
+    loading,
+    error,
+  } = useFetch("http://localhost:8000/blogs");
+  //If-statementissä tarksitetaan, jos ei olemassa olevaa palvelinta ole, niin lähetetään käyttäjälle virheviesti")
 
   //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
   //If-statementissä tarksitetaan, jos ei olemassa olevaa palvelinta ole, niin lähetetään käyttäjälle virheviesti
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:8000/blogs")
-        .then((res) => {
-          if (!res.ok) {
-            throw Error("Could not fetch the data for that resource");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setBlogs(data);
-          setLoading(false);
-          setError(null);
-        })
-        .catch((err) => {
-          setLoading(false);
-          setError(err.message);
-        });
-    }, 400);
-  }, []);
 
   // Filtteröidään blogit toisistaan auktoriteetti-ominaisuuden avulla, jonka arvo on Mario. Lis�ksi m��ritell��n
   //Testataan useEffect toimintoa, kun halutaan vain, että nimi muuttuu, kun klikataan nimi-buttonia,
