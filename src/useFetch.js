@@ -11,8 +11,10 @@ const useFetch = (url) => {
   //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
   //If-statementissä tarksitetaan, jos ei olemassa olevaa palvelinta ole, niin lähetetään käyttäjälle virheviesti
   useEffect(() => {
+    const abortCont = new AbortController();
+
     setTimeout(() => {
-      fetch(url)
+      fetch(url, { signal: abortCont.signal }) //Estetään noutamasta dataa, kun tehdään nopeat klikkaukset edes takaisin
         .then((res) => {
           if (!res.ok) {
             throw Error("Could not fetch the data for that resource");
@@ -25,10 +27,16 @@ const useFetch = (url) => {
           setError(null);
         })
         .catch((err) => {
-          setLoading(false);
-          setError(err.message);
+          if (err.name === "AbortError") {
+            console.log("fetch aborted");
+          } else {
+            setLoading(false);
+            setError(err.message);
+          }
         });
     }, 400);
+
+    return () => abortCont.abort();
   }, [url]);
 
   return { data, loading, error };
