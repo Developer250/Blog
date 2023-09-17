@@ -5,7 +5,7 @@ const useFetch = (url) => {
   //setBlogs avulla voidaan muuttaa blogin tilaa eli klikataan jotain ja tapahtuu jotain.
   const [data, setData] = useState(null);
   //Latausviesti palvelimessa
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   //Haetaan data/db.json kansion tiedot eli taulukossa oelvat tiedot
@@ -39,7 +39,7 @@ const useFetch = (url) => {
     return () => abortCont.abort();
   }, [url]);
 
-  return { data, loading, error };
+  return { data, isLoading, error };
 };
 
 export default useFetch;
