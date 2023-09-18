@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BlogList = ({ blogs, title }) => {
   return (
     <div className="blog-list">
@@ -6,8 +8,10 @@ const BlogList = ({ blogs, title }) => {
             {/ Key atribuuttilla annetaan jokaiselle blogille omat id-numerot, jotta voidaan käydä yksilöllisesti läpi*/}
       {blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>
-          <h2> {blog.title} </h2>
-          <p> Written by {blog.author}</p>
+          <Link to={`/blogs/${blog.id}`}>
+            <h2> {blog.title} </h2>
+            <p> Written by {blog.author}</p>
+          </Link>
         </div>
       ))}
     </div>
