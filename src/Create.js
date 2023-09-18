@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//Controlled inputs
 const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -24,7 +24,7 @@ const Create = () => {
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
         <label>Blog Author:</label>
-        <select value={author} onChange={(e) => e.target.value}>
+        <select value={author} onChange={(e) => setAuthor(e.target.value)}>
           <option value="mario">mario</option>
           <option value="luigi">luigi</option>
         </select>
