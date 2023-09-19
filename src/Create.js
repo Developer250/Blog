@@ -6,7 +6,6 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("mario");
-  const [isLoading, setLoading] = useState(false);
   const history = useHistory();
 
   //Form's submission with page's update prevention when submitting the form
@@ -15,20 +14,17 @@ const Create = () => {
     const blog = { title, body, author };
 
     //POST request to an endpoint
-    setLoading(true);
 
-    fetch("http://localhost:8000/blogs", {
+    fetch("http://localhost:8000/blogs/", {
       method: "POST",
-      headers: { "Content-type": "applcation/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
     }).then(() => {
-      console.log("new blog added");
-      setLoading(false);
-      //history.go(-1);
       history.push("/");
     });
   };
 
+  //User can create a new blog
   return (
     <div className="create">
       <h2>Add a new blog</h2>
@@ -40,7 +36,6 @@ const Create = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-
         <label>Blog body:</label>
         <textarea
           required
@@ -52,8 +47,7 @@ const Create = () => {
           <option value="mario">mario</option>
           <option value="luigi">luigi</option>
         </select>
-        {!isLoading && <button>Add a new blog</button>}
-        {isLoading && <button> disabeld Adding a new blog...</button>}
+        <button>Add a new blog</button>
       </form>
     </div>
   );

@@ -102,3 +102,13 @@
     border-radius: 15px;
     cursor: pointer;
   }
+
+  .blog-details article {
+    margin: 10px;
+   
+   
+  }
+  .blog-details h2 div button{
+    border-radius: 30%;
+    box-sizing: border-box;
+  }
