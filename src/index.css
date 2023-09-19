@@ -3,9 +3,11 @@
 
 /* base styles */
 * {
-    background: purple;
+    background-image: url("https://www.astronomy.com/wp-content/uploads/sites/2/2023/06/ASY-SM0723_08.jpeg?fit=620%2C413&resize=620%2C413");
+    background-size: cover;
+    background-position: 0%;
     font-family: "Quicksand";
-    color: #333;
+    color:#82005a;
 }
 
 .navbar {
@@ -19,11 +21,11 @@
 }
 
     .navbar h1 {
-        background-color: blueviolet;
-        color: beige;
+        color: white;
     }
 
     .navbar .links {
+        padding: 20px;
         margin-left: auto;
     }
 
@@ -33,22 +35,23 @@
         color:beige;
         margin-left: 16px;
         text-decoration: none;
-        padding: 6px;
+        padding: 13px;
+        font-size: 20px;
     }
 
         .navbar a:hover {
-            color: #ffa500;
+            color:violet;
+;
         }
 
 .title-home{
     
     text-align: center;
     margin: 1px 17px;
-    text-decoration-line: underline;
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-color: #f1356d;
-background: #ffa500;
+background: darkgoldenrod;
 }
 
 .content {
@@ -68,7 +71,7 @@ background: #ffa500;
 .blog-preview h2{
     border-bottom:double;
     font-size:15px;
-    color:darkkhaki;
+    color:#fff;
     margin-bottom:8px;
 }
 .blog-preview a {
@@ -117,4 +120,7 @@ background: #ffa500;
   .blog-details h2 div button{
     border-radius: 30%;
     box-sizing: border-box;
+  }
+  .select-author option{
+color: red;
   }

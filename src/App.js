@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Create from "./create";
 import BlogsDetails from "./BlogsDetails";
 import NotFound from "./NotFound";
+
+//Rendering all of the routes
 function App() {
   return (
     <Router>
