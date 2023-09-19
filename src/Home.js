@@ -13,10 +13,6 @@ const Home = () => {
       {error && <div>{error}</div>}
       {isLoading && <div>Loading...</div>}
       {blogs && <BlogList blogs={blogs} />}
-      <img
-        src="https://thumbs.dreamstime.com/b/sea-water-ocean-wave-surfing-surface-colorful-vibrant-sunset-barrel-shape-124362369.jpg"
-        alt=""
-      />
     </div>
   );
 };
