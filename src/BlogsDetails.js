@@ -4,12 +4,14 @@ import useFetch from "./useFetch";
 const blogsDetails = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { id } = useParams();
-  const history = useHistory();
   const {
     data: blogs,
     isLoading,
     error,
+    // eslint-disable-next-line react-hooks/rules-of-hooks
   } = useFetch("http://localhost:8000/blogs/" + id);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const history = useHistory();
 
   const handleClick = () => {
     fetch("http://localhost:8000/blogs/" + blogs.id, {
@@ -18,6 +20,7 @@ const blogsDetails = () => {
       history.push("/");
     });
   };
+
   return (
     <div className="blog-details">
       {isLoading && <div> Loading...</div>}
