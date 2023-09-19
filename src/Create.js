@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 //Controlled inputs
 const Create = () => {
@@ -6,6 +7,7 @@ const Create = () => {
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("mario");
   const [isLoading, setLoading] = useState(false);
+  const history = useHistory();
 
   //Form's submission with page's update prevention when submitting the form
   const handleSubmit = (e) => {
@@ -22,6 +24,8 @@ const Create = () => {
     }).then(() => {
       console.log("new blog added");
       setLoading(false);
+      //history.go(-1);
+      history.push("/");
     });
   };
 
