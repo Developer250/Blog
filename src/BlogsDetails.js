@@ -13,6 +13,9 @@ const blogsDetails = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const history = useHistory();
 
+  //Click-button enabled
+  //Gets the server and data
+  //Fowardind to the home page after deleting a post
   const handleClick = () => {
     fetch("http://localhost:8000/blogs/" + blogs.id, {
       method: "DELETE",

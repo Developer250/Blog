@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+//Setting up the states
 //Controlled inputs
 const Create = () => {
   const [title, setTitle] = useState("");
