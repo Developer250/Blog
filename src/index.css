@@ -60,6 +60,8 @@
     margin: 40px auto;
     padding: 20px;
 }
+
+/* blog previews / list */
 .blog-preview{
     padding: 10px 17px;
     border-radius:10px;
@@ -110,7 +112,7 @@
     padding: 8px;
     border-radius: 15px;
     cursor: pointer;
-    background-color: #f2f2f2;
+    background-color: red;
   }
 
   .blog-details article  button{

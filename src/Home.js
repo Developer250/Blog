@@ -1,6 +1,7 @@
 ﻿import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 
+//Fetching the data
 const Home = () => {
   const {
     error,
